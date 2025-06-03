@@ -1,4 +1,4 @@
-import { ScheduleResponseDTO } from "./create-schedule.dto";
+import type { ScheduleResponseDTO } from "./create-schedule.dto";
 
 export interface ListSchedulesInputDTO {
   data?: string;

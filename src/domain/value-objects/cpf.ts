@@ -3,7 +3,7 @@ export class CPF {
 
   constructor(cpf: string) {
     if (!this.isValid(cpf)) {
-      throw new Error('CPF inválido');
+      throw new Error("CPF inválido");
     }
     this.value = this.clean(cpf);
   }
@@ -13,7 +13,7 @@ export class CPF {
   }
 
   private clean(cpf: string): string {
-    return cpf.replace(/\D/g, '');
+    return cpf.replace(/\D/g, "");
   }
 
   private isValid(cpf: string): boolean {

@@ -1,5 +1,4 @@
-import { Scheduling } from "../entities/scheduling";
-
+import type { Scheduling } from "../entities/scheduling";
 
 export interface SchedulingRepository {
   save(scheduling: Scheduling): Promise<Scheduling>;

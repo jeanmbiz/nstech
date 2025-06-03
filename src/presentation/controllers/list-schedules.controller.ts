@@ -1,13 +1,11 @@
-import { Request, Response } from 'express';
-import { ListSchedulesInputDTO } from "../../application/dtos/list-schedule.dto";
-import { ListSchedulesUseCase } from "../../application/use-cases/list-schedule.use-case";
+import type { NextFunction, Request, Response } from "express";
+import type { ListSchedulesInputDTO } from "../../application/dtos/list-schedule.dto";
+import type { ListSchedulesUseCase } from "../../application/use-cases/list-schedule.use-case";
 
 export class ListSchedulesController {
-  constructor(
-    private readonly listSchedulesUseCase: ListSchedulesUseCase
-  ) { }
+  constructor(private readonly listSchedulesUseCase: ListSchedulesUseCase) { }
 
-  async handle(req: Request, res: Response, next: Function): Promise<void> {
+  async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { data, status, motoristaCpf } = req.query as {
         data?: string;
@@ -18,13 +16,13 @@ export class ListSchedulesController {
       const input: ListSchedulesInputDTO = {
         data,
         status,
-        motoristaCpf
+        motoristaCpf,
       };
 
       const result = await this.listSchedulesUseCase.execute(input);
 
       res.status(200).json(result);
-    } catch (error: any) {
+    } catch (error: unknown) {
       next(error);
     }
   }

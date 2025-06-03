@@ -1,8 +1,8 @@
-import { ContractNumber } from "../value-objects/contract-number";
-import { CPF } from "../value-objects/cpf";
-import { SchedulingStatusVO } from "../value-objects/status-scheduling";
-import { TruckPlate } from "../value-objects/truck-plate";
 import { InvalidStatusException } from "../exceptions/domain.exceptions";
+import type { ContractNumber } from "../value-objects/contract-number";
+import type { CPF } from "../value-objects/cpf";
+import type { SchedulingStatusVO } from "../value-objects/status-scheduling";
+import type { TruckPlate } from "../value-objects/truck-plate";
 
 export interface SchedulingProps {
   id: string;
@@ -52,10 +52,10 @@ export class Scheduling {
   changeStatus(newStatus: SchedulingStatusVO): void {
     if (!this.props.status.changeStatus(newStatus)) {
       if (this.props.status.isCompleted() && newStatus.isCanceled()) {
-        throw new InvalidStatusException('Não é possível cancelar um agendamento já concluído');
+        throw new InvalidStatusException("Não é possível cancelar um agendamento já concluído");
       }
       if (this.props.status.isCanceled()) {
-        throw new InvalidStatusException('Não é possível alterar um agendamento cancelado');
+        throw new InvalidStatusException("Não é possível alterar um agendamento cancelado");
       }
     }
     this.props.status = newStatus;

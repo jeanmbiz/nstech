@@ -3,7 +3,7 @@ export class TruckPlate {
 
   constructor(plate: string) {
     if (!this.isValid(plate)) {
-      throw new Error('plate do caminhão inválida');
+      throw new Error("plate do caminhão inválida");
     }
     this.value = plate.toUpperCase();
   }

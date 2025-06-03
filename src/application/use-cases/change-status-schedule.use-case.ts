@@ -1,14 +1,14 @@
-import { Scheduling } from "../../domain/entities/scheduling";
+import type { Scheduling } from "../../domain/entities/scheduling";
 import { ScheduleNotFoundException } from "../../domain/exceptions/domain.exceptions";
-import { SchedulingRepository } from "../../domain/repositories/scheduling.repository";
+import type { SchedulingRepository } from "../../domain/repositories/scheduling.repository";
 import { SchedulingStatusVO } from "../../domain/value-objects/status-scheduling";
-import { ChangeStatusResponseDTO, ChangeStatusScheduleDTO } from "../dtos/change-status-schedule.dto";
-
+import type {
+  ChangeStatusResponseDTO,
+  ChangeStatusScheduleDTO,
+} from "../dtos/change-status-schedule.dto";
 
 export class ChangeStatusSchedulingUseCase {
-  constructor(
-    private readonly schedulingRepository: SchedulingRepository
-  ) { }
+  constructor(private readonly schedulingRepository: SchedulingRepository) {}
 
   async execute(id: string, dto: ChangeStatusScheduleDTO): Promise<ChangeStatusResponseDTO> {
     const scheduling = await this.schedulingRepository.schedulingById(id);
@@ -34,7 +34,7 @@ export class ChangeStatusSchedulingUseCase {
       motoristaNome: scheduling.motoristaNome,
       motoristaCpf: scheduling.motoristaCpf.getValue(),
       placaCaminhao: scheduling.placaCaminhao.getValue(),
-      status: scheduling.getStatusValue()
+      status: scheduling.getStatusValue(),
     };
   }
 }

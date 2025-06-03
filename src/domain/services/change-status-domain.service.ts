@@ -1,15 +1,14 @@
-import { Scheduling } from "../entities/scheduling";
+import type { Scheduling } from "../entities/scheduling";
 import { ScheduleNotFoundException } from "../exceptions/domain.exceptions";
-import { SchedulingStatusVO } from "../value-objects/status-scheduling";
-
+import type { SchedulingStatusVO } from "../value-objects/status-scheduling";
 
 export class ChangeStatusDomainService {
   static changeStatus(
     schedulings: Scheduling[],
     id: string,
-    newStatus: SchedulingStatusVO
+    newStatus: SchedulingStatusVO,
   ): Scheduling {
-    const scheduling = schedulings.find(a => a.id === id);
+    const scheduling = schedulings.find((a) => a.id === id);
 
     if (!scheduling) {
       throw new ScheduleNotFoundException(id);

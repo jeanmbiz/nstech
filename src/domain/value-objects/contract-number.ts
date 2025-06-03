@@ -3,7 +3,7 @@ export class ContractNumber {
 
   constructor(contractNumber: string) {
     if (!contractNumber || contractNumber.trim().length === 0) {
-      throw new Error('Número do contrato não pode ser vazio');
+      throw new Error("Número do contrato não pode ser vazio");
     }
     this.value = contractNumber.trim();
   }

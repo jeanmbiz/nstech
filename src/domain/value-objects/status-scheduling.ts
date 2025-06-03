@@ -52,6 +52,6 @@ export class SchedulingStatusVO {
   }
 
   toString(): string {
-    return this.value
+    return this.value;
   }
 }
