@@ -26,7 +26,7 @@ export class ListSchedulesUseCase {
       }
 
       const date = new Date(input.data);
-      if (isNaN(date.getTime())) {
+      if (Number.isNaN(date.getTime())) {
         throw new Error("Data inválida");
       }
     }
@@ -40,7 +40,6 @@ export class ListSchedulesUseCase {
 
       filteredSchedules = filteredSchedules.filter((schedule) => {
         const scheduleDate = new Date(schedule.dataHora);
-
         return (
           scheduleDate.getFullYear() === year &&
           scheduleDate.getMonth() === month - 1 &&

@@ -1,11 +1,11 @@
-import type { NextFunction, Request, Response } from "express";
+import type { Response } from "express";
 import {
   InvalidStatusException,
   ScheduleNotFoundException,
 } from "../../domain/exceptions/domain.exceptions";
 
 // biome-ignore lint/suspicious/noExplicitAny: Express error middleware requires any type
-export function errorHandler(error: any, req: Request, res: Response, next: NextFunction) {
+export function errorHandler(error: any, res: Response) {
   if (error instanceof ScheduleNotFoundException) {
     res.status(404).json({ error: error.message });
     return;

@@ -4,7 +4,7 @@ import { ChangeStatusSchedulingUseCase } from "../application/use-cases/change-s
 import { CreateScheduleUseCase } from "../application/use-cases/create-schedule.use-case";
 import { InMemorySchedulingRepository } from "../infra/repositories/in-memory-scheduling.repository";
 
-describe.only("Change Schedule Use Case", () => {
+describe("Change Schedule Use Case", () => {
   let createScheduleUseCase: CreateScheduleUseCase;
   let changeStatusSchedulingUseCase: ChangeStatusSchedulingUseCase;
   let repository: InMemorySchedulingRepository;

@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { Scheduling } from "../../domain/entities/scheduling";
 import type { SchedulingRepository } from "../../domain/repositories/scheduling.repository";
-import { SchedulingDomainService } from "../../domain/services/scheduling-domain.service";
+import { validateConflicts } from "../../domain/services/scheduling-domain.service";
 import { SchedulingStatus } from "../../domain/shared/scheduling-status";
 import { ContractNumber } from "../../domain/value-objects/contract-number";
 import { CPF } from "../../domain/value-objects/cpf";
@@ -10,14 +10,14 @@ import { TruckPlate } from "../../domain/value-objects/truck-plate";
 import type { CreateScheduleDTO, ScheduleResponseDTO } from "../dtos/create-schedule.dto";
 
 export class CreateScheduleUseCase {
-  constructor(private readonly schedulingRepository: SchedulingRepository) {}
+  constructor(private readonly schedulingRepository: SchedulingRepository) { }
 
   async execute(dto: CreateScheduleDTO): Promise<ScheduleResponseDTO> {
     const schedule = this.createScheduleFromDTO(dto);
 
     const existingSchedules = await this.schedulingRepository.allScheduling();
 
-    SchedulingDomainService.validateConflicts(schedule, existingSchedules);
+    validateConflicts(schedule, existingSchedules);
 
     const savedSchedule = await this.schedulingRepository.save(schedule);
 

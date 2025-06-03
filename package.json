@@ -5,7 +5,7 @@
     "start": "ts-node-dev src/index.ts",
     "test": "jest --passWithNoTests",
     "lint": "biome lint .",
-    "lint:fix": "biome lint --apply .",
+    "lint:fix": "biome lint --write .",
     "format": "biome format .",
     "format:write": "biome format --write .",
     "check": "biome check .",

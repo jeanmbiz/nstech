@@ -14,11 +14,11 @@ export class InMemorySchedulingRepository implements SchedulingRepository {
   }
 
   async schedulingById(id: string): Promise<Scheduling | null> {
-    return this.schedulings.find((a) => a.id === id) || null;
+    return this.schedulings.find(s => s.id === id) || null;
   }
 
   async update(scheduling: Scheduling): Promise<Scheduling> {
-    const index = this.schedulings.findIndex((scheduling) => scheduling.id === scheduling.id);
+    const index = this.schedulings.findIndex((s) => s.id === scheduling.id);
 
     if (index === -1) {
       throw new Error(`Scheduling com ID ${scheduling.id} não encontrado`);
