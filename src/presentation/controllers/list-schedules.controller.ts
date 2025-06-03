@@ -7,7 +7,7 @@ export class ListSchedulesController {
     private readonly listSchedulesUseCase: ListSchedulesUseCase
   ) { }
 
-  async handle(req: Request, res: Response): Promise<void> {
+  async handle(req: Request, res: Response, next: Function): Promise<void> {
     try {
       const { data, status, motoristaCpf } = req.query as {
         data?: string;
@@ -25,17 +25,7 @@ export class ListSchedulesController {
 
       res.status(200).json(result);
     } catch (error: any) {
-      this.handleError(error, res);
+      next(error);
     }
-  }
-
-  private handleError(error: any, res: Response): void {
-    if (error.message.includes('inválido') || error.message.includes('vazio')) {
-      res.status(400).json({ error: error.message });
-      return;
-    }
-
-    console.error('Erro não tratado:', error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
