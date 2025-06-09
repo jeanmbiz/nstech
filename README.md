@@ -133,33 +133,15 @@ Os testes cobrem:
 - Listagem de agendamentos, com aplicação de filtros (data, status, CPF do motorista).
 - Exclusão de agendamentos com mais de 3 dias.
 
-## Estrutura do Projeto
-
-```bash
-├── src
-│   ├── controllers
-│   │   └── agendamentoController.ts    # Controladores das rotas
-│   ├── services
-│   │   └── agendamentoService.ts       # Lógica de negócios e regras
-│   ├── models
-│   │   └── agendamento.ts              # Modelo do agendamento
-│   ├── routes
-│   │   └── agendamentoRoutes.ts        # Definição das rotas da API
-│   └── app.ts                          # Configuração do app Express
-├── tests
-│   └── agendamento.test.ts             # Testes unitários
-├── package.json
-├── tsconfig.json
-└── README.md
-
-```
-
 ## Tecnologias Utilizadas
 - Node.js
 - Express.js
+- Express Validator
 - TypeScript
 - Jest para testes unitários
 - date-fns para manipulação de datas
+- Uuid
+- Biome
 
 ## Considerações Finais
 Este projeto é um desafio técnico projetado para validar as habilidades em Node.js, Express, TypeScript e o uso de TDD. O desafio foi elaborado com o objetivo de avaliar o conhecimento de boas práticas de desenvolvimento, como a criação de testes, refatoração e o uso correto de serviços e controladores.
